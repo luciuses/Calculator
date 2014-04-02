@@ -1,5 +1,4 @@
 <?xml version='1.0' encoding='UTF-8' ?>
-<!-- was: <?xml version="1.0" encoding="UTF-8"?> -->
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:p="http://www.springframework.org/schema/p"
@@ -10,16 +9,10 @@
        http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
 
     <bean class="org.springframework.web.servlet.mvc.support.ControllerClassNameHandlerMapping"/>
-    <!--bean class="com.luciuses.calculator.CalculatorController" p:calculatorService-ref="calculatorService"/-->
-    <!--
-    Most controllers will use the ControllerClassNameHandlerMapping above, but
-    for the index controller we are using ParameterizableViewController, so we must
-    define an explicit mapping for it.
-    -->
+    
     <bean id="urlMapping" class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
         <property name="mappings">
             <props>
-                <!--prop key="index.htm">indexController</prop-->
                 <prop key="calculator.htm">calculatorController</prop>
             </props>
         </property>
@@ -30,14 +23,6 @@
           p:prefix="/WEB-INF/jsp/"
           p:suffix=".jsp" />
 
-    <!--
-    The index controller.
-    -->
-    <!--bean name="indexController"
-    class="org.springframework.web.servlet.mvc.ParameterizableViewController"
-    p:viewName="index" /-->
     <bean name="calculatorController" class="com.luciuses.calculator.CalculatorController"/>
     
-    <!--p:viewName="calculator" /-->
-    <!--context:component-scan base-package="com.luciuses.calculator"/-->
 </beans>

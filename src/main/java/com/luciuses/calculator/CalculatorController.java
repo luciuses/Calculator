@@ -11,17 +11,15 @@ import org.apache.commons.logging.LogFactory;
 @Controller
 
 public class CalculatorController {
-
-    private CalculatorService calculatorService;
-// 
+    
 //initializing the logger
     private final static Log log = LogFactory.getLog(CalculatorController.class);
-
+//initializing the service for calculating
+    private CalculatorService calculatorService;
     public void setCalculatorService(CalculatorService calculatorService) {
         this.calculatorService = calculatorService;
     }
-//@Controller
-
+//Processing request method POST
     @RequestMapping(value = "/calculator.htm", method = RequestMethod.POST)
     protected ModelAndView calculator(
             @RequestParam("argument1") String arg1,
@@ -31,26 +29,26 @@ public class CalculatorController {
         log.info("Request /calculator.htm POST: arg1- "+arg1+", arg2- "+arg2+", operation- "+oper);
         ModelAndView mav = new ModelAndView();
         mav.setViewName("calculator");
-        mav.addObject("full_result", calculatorService.getResult(arg1, arg2, oper, true));
-        mav.addObject("result", calculatorService.getResult(arg1, arg2, oper, false));
-        mav.addObject("arg1", arg1);
-        mav.addObject("arg2", arg2);
-        mav.addObject("oper", oper);
-        mav.addObject("operations", Operation.values());
+        mav.addObject("full_result", calculatorService.getResult(arg1, arg2, oper, true));//for display the full arithmetic expression
+        mav.addObject("result", calculatorService.getResult(arg1, arg2, oper, false));//for display the result arithmetic operation in out field
+        mav.addObject("arg1", arg1);//for display the first argument
+        mav.addObject("arg2", arg2);//for display a second argument
+        mav.addObject("oper", oper);//arithmetic operation for displaying
+        mav.addObject("operations", Operation.values());//for fill the available arithmetic operations
         log.info("Model calculated and created");
         return mav;
     }
-
+//Initial processing of the request page
     @RequestMapping("/calculator.htm")
     protected ModelAndView calculator() {
         ModelAndView mav = new ModelAndView();
         mav.setViewName("calculator");
-        mav.addObject("result", "");
-        mav.addObject("full_result", "");
-        mav.addObject("arg1", "");
-        mav.addObject("arg2", "");
+        mav.addObject("result", "");//display empty field in the output result
+        mav.addObject("full_result", "");//display empty field in the output full arithmetic expression
+        mav.addObject("arg1", "");//displaying in the input field empty argument1
+        mav.addObject("arg2", "");//displaying in the input field empty argument2
         mav.addObject("oper", "");
-        mav.addObject("operations", Operation.values());
+        mav.addObject("operations", Operation.values());//for fill the available arithmetic operations
         log.info("Model created");
         return mav;
     }

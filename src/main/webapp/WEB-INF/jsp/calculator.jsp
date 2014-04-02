@@ -16,7 +16,7 @@
         <script src="js/libs/jquery.maskedinput/jquery.inputmask.js" type="text/javascript"></script>
         <script src="js/libs/jquery.maskedinput/jquery.inputmask-regex.js" type="text/javascript"></script>
         <script>
-            
+
             jQuery(function() {
                 /* Masked input arguments, */
                 $("#arg1id").inputmask('Regex', {regex: "[-+]?[0-9]+\\.?[0-9]*"});
@@ -30,40 +30,31 @@
         </script>
     </head>
     <body>
-        <table align="center" >
-            <tbody>
-                <tr>
-                    <td></td>
-                    <td>
-                        <div class="bord">
-                            <div class="header">
-                                <h1>Calculator</h1>
-                            </div>
-
-                            <form id="form" action="" method="post">
-                                <div class="arg">
-                                    <input type="text" size="20px" name="argument1" value="${arg1}" id="arg1id">
-                                    <select id="operid" name="oper">
-                                        <c:forEach items="${operations}" var="_operation">
-                                            <option value="${_operation.name()}" ${_operation.name()==oper?'selected':''}>${_operation.toString()}</option>
-                                        </c:forEach>
-                                    </select>
-                                    <input  type="text" size="20px" name="argument2" value="${arg2}" id="arg2id">
-                                    <input type="submit" id="submit" value="  =  " />
-                                    <input name="result" size="20" type="text" value="${result}"/>
-                                </div>
-                                <br>
-                                <div class="result">
-                                    <b>${full_result}</b>
-                                </div>
-                            </form>
+        
+                    <div class="form">
+                        <div class="header">
+                            <h1>Calculator</h1>
                         </div>
-                    </td>
-                    <td></td>
-                </tr>
-            </tbody>
-        </table>
 
+                        <form id="form" action="" method="post">
+                            <div class="arg">
+                                <input type="text" size="20px" name="argument1" value="${arg1}" id="arg1id">
+                                <select id="operid" name="oper">
+                                    <c:forEach items="${operations}" var="_operation">
+                                        <option value="${_operation.name()}" ${_operation.name()==oper?'selected':''}>${_operation.toString()}</option>
+                                    </c:forEach>
+                                </select>
+                                <input  type="text" size="20px" name="argument2" value="${arg2}" id="arg2id">
+                                <input type="submit" id="submit" value="  =  " />
+                                <input name="result" size="20" type="text" value="${result}"/>
+                            </div>
+                            <br>
+                            <div class="result">
+                                <b>${full_result}</b>
+                            </div>
+                        </form>
+                    </div>
+            
     </body>
 
 </html>
