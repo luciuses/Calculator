@@ -15,9 +15,9 @@ public class CalculatorService {
                 log.info("Creating full result");
                 //Creating string arithmetic expression for full result
                 if (_oper.name().indexOf("_1arg") != -1) {
-                    res = _oper.toString() + "(" + arg1 + ") = ";
+                    res = _oper.getText() + "(" + arg1 + ") = ";
                 } else {
-                    res = arg1 + _oper.toString() + arg2 + " = ";
+                    res = arg1 + _oper.getText() + arg2 + " = ";
                 }
             }
             //select the arithmetic operation and execute it

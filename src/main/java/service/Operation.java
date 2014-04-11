@@ -10,8 +10,11 @@ public enum Operation {
    
     private final String text;
 
-    @Override
-    public String toString() {
+    public String getText() {
         return text;
+    }
+  //added getter for the name in the view without marking function"()". Restriction is Tomcat 6
+    public String getName() {
+        return this.name();
     }
 }

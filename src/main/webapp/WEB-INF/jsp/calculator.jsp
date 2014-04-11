@@ -41,7 +41,7 @@
                                 <input type="text" size="20px" name="argument1" value="${arg1}" id="arg1id">
                                 <select id="operid" name="oper">
                                     <c:forEach items="${operations}" var="_operation">
-                                        <option value="${_operation.name()}" ${_operation.name()==oper?'selected':''}>${_operation.toString()}</option>
+                                        <option value="${_operation.name}" ${_operation.name==oper?'selected':''}>${_operation.text}</option>
                                     </c:forEach>
                                 </select>
                                 <input  type="text" size="20px" name="argument2" value="${arg2}" id="arg2id">
